@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack"
+    "build": "webpack",
+    "start": "webpack-dev-server --open"
   },
   "repository": "git+https://github.com/brajabi/my-pig.git",
   "keywords": [
@@ -21,7 +22,9 @@
   },
   "homepage": "https://github.com/brajabi/my-pig#readme",
   "devDependencies": {
-    "webpack": "^3.6.0"
+    "babel-preset-react": "^6.24.1",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.9.1"
   },
   "dependencies": {
     "babel-core": "^6.26.0",

@@ -12,9 +12,14 @@ const config = {
     rules: [
       {
         test: /.js$/,
-        loader: 'babel-loader'
+        use: 'babel-loader'
       }
     ]
+  },
+  devServer: {
+    contentBase: path.join(__dirname, "dist"),
+    compress: true,
+    port: 9000
   }
 };
 
