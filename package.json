@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/brajabi/my-pig#readme",
   "devDependencies": {
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.9.1"
