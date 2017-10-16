@@ -2,14 +2,15 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { add_invoice } from '../actions/invoice'
 import InvoiceItem from './InvoiceItem'
+import InvoiceAdder from './InvoiceAdder'
 
 class BudgetList extends Component {
-  
+
   constructor() {
     super();
     this.state = {
       currentValue: "",
-      currentPrice: 0
+      currentPrice: 0,
     }
   }
 
@@ -37,29 +38,24 @@ class BudgetList extends Component {
       totalPrice += p.price;
     });
 
-    console.log(totalPrice);
     return (
       <div>
+
         <div>Sum: {totalPrice}</div>
+
         <ul>
           {valuesArray.map( ( p, i ) => (
             <InvoiceItem title={p.title} price={p.price} key={i}  />
           ))}
         </ul>
-        <div>
-          <input
-            type="text"
-            onChange={this.itemSaver.bind(this)}
-            value={this.state.currentValue}
-            placeholder="item name"
-          />
-          <input
-            type="text"
-            onChange={this.priceSaver.bind(this)}
-            value={this.state.currentPrice}
-          />
-          <button onClick={this.addInvoiceHandler}>add</button>
-        </div>
+        
+        <InvoiceAdder
+          onChangeTitle={this.itemSaver}
+          titleValue={this.state.currentValue}
+          onChangePrice={this.priceSaver}
+          priceValue={this.state.currentPrice}
+          onAddClick={this.addInvoiceHandler}
+        />
       </div>
     )
   }
