@@ -1,8 +1,11 @@
 import React from 'react'
 import BudgetList from './BudgetList'
+import NavBar from './NavBar'
+import '../styles/App.css'
 
 const App = () => [
-  <BudgetList key="1" />,
+  <NavBar key="1" />,
+  <BudgetList key="2" />,
 ]
 
 export default App
