@@ -13,7 +13,21 @@ const config = {
       {
         test: /.js$/,
         use: 'babel-loader'
-      }
+      },
+      {
+        test: /\.css$/,
+        use:
+        [
+          { loader: 'style-loader' },
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true
+            }
+          }
+        ]
+      },
+      { test: /\.ts$/, use: 'ts-loader' }
     ]
   },
   devServer: {
