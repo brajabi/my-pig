@@ -1,4 +1,13 @@
 import React from 'react'
+import styled from 'styled-components'
+
+const Wrapper = styled.div`
+  width: 100%;
+  height: 50px;
+  border: 3px solid #2D9AFF;
+  display: flex;
+  align-items: center;
+`
 
 const InviceAdder = ({
   onChangeTitle,
@@ -7,7 +16,7 @@ const InviceAdder = ({
   priceValue,
   onAddClick
 }) => (
-    <div>
+    <Wrapper>
       <input
         type="text"
         onChange={onChangeTitle.bind(this)}
@@ -20,7 +29,7 @@ const InviceAdder = ({
         value={priceValue}
       />
       <button onClick={onAddClick}>add</button>
-    </div>
+    </Wrapper>
 )
 
 export default InviceAdder
