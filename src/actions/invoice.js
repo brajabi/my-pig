@@ -1,4 +1,4 @@
-export const add_invoice = ( title, price ) => {
+export const addInvoice = (title, price) => {
   return {
     type: 'ADD_INVOICE',
     title: title,
