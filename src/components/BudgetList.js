@@ -2,34 +2,15 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 
-import { add_invoice } from '../actions/invoice'
+import * as actions from '../actions/invoice'
 import InvoiceItem from './InvoiceItem'
 import InvoiceAdder from './InvoiceAdder'
 import NowTimeLine from './NowTimeLine'
 
-const Wrapper = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-`
-const InvoiceItemContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  padding: 0 20px 0 20px;
-  font-size: 20px;
-`
-
 class BudgetList extends Component {
-
-  constructor() {
-    super();
-    this.state = {
-      currentValue: "",
-      currentPrice: 0,
-    }
+  state = {
+    currentValue: "",
+    currentPrice: "",
   }
 
   itemSaver = (props) => {
@@ -41,10 +22,11 @@ class BudgetList extends Component {
   }
 
   addInvoiceHandler = () => {
-    this.props.dispatch(add_invoice(
+    this.props.addInvoice(
       this.state.currentValue,
       this.state.currentPrice,
-    ))
+    )
+
     this.setState({ currentValue: "", currentPrice: 0 })
   }
 
@@ -58,14 +40,15 @@ class BudgetList extends Component {
 
     return (
       <Wrapper>
+        <div>
+          <InvoiceItemContainer>
+            {valuesArray.map( ( p, i ) => (
+              <InvoiceItem title={p.title} price={p.price} key={i}  />
+            ))}
+          </InvoiceItemContainer>
 
-        <InvoiceItemContainer>
-          {valuesArray.map( ( p, i ) => (
-            <InvoiceItem title={p.title} price={p.price} key={i}  />
-          ))}
-        </InvoiceItemContainer>
-
-        <NowTimeLine totalPrice={totalPrice} />
+          <NowTimeLine totalPrice={totalPrice} />
+        </div>
 
         <InvoiceAdder
           onChangeTitle={this.itemSaver}
@@ -80,8 +63,29 @@ class BudgetList extends Component {
   }
 }
 
+const Wrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  flex: 1 1 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+`
+
+const InvoiceItemContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  padding: 0 20px 0 20px;
+  font-size: 20px;
+`
+
 const mapStateToProps = state => ({
   valuesArray: state,
 })
 
-export default connect(mapStateToProps)(BudgetList)
+const mapDispatchToProps = {
+  addInvoice: actions.addInvoice,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(BudgetList)
