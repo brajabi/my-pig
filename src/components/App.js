@@ -1,11 +1,22 @@
 import React from 'react'
+import styled from 'styled-components'
+
 import BudgetList from './BudgetList'
 import NavBar from './NavBar'
 import '../styles/App.css'
 
-const App = () => [
-  <NavBar key="1" />,
-  <BudgetList key="2" />,
-]
+const Wrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+`
+
+const App = () => ( 
+  <Wrapper>
+    <NavBar />
+    <BudgetList />
+  </Wrapper>
+)
 
 export default App
