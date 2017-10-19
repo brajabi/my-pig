@@ -30,6 +30,7 @@ const config = {
       { test: /\.ts$/, use: 'ts-loader' }
     ]
   },
+  devtool: 'inline-source-map',
   devServer: {
     contentBase: path.join(__dirname, "dist"),
     compress: true,
