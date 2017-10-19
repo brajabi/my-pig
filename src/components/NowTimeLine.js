@@ -23,6 +23,7 @@ const Content = styled.div`
   justify-content: space-between;
   align-items: center;
   color: #DF432C;
+  height: 28px;
 `
 
 const DashedLine = styled.div`
@@ -32,7 +33,7 @@ const DashedLine = styled.div`
 
 const TotalPrice = styled.div`
   flex: 0 0 auto;
-  width: 72px;
+  padding: 0 10px;
   text-align: center;
   font-size: 24px;
   margin-top: 11px;
