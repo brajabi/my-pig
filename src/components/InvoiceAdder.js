@@ -9,12 +9,14 @@ const InviceAdder = ({
   onAddClick
 }) => (
     <Wrapper>
+      
       <InvoiceTitleText
         type="text"
         onChange={onChangeTitle.bind(this)}
         value={titleValue}
         placeholder="Invoice name"
       />
+
       <InvoicePriceNumber
         type="number"
         size="4"
@@ -22,11 +24,14 @@ const InviceAdder = ({
         placeholder="Price"
         value={priceValue}
       />
+
       <ButtonAdder onClick={onAddClick}>+</ButtonAdder>
+
     </Wrapper>
 )
 
 const Wrapper = styled.div`
+  max-width: 1000px;
   position: fixed;
   bottom: 0;
   left: 0;
