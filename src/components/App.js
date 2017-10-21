@@ -6,14 +6,17 @@ import NavBar from './NavBar'
 import '../styles/App.css'
 
 const Wrapper = styled.div`
+  max-width: 1000px;
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
+  position: absolute;
+  height: auto;
+  bottom: 0;
+  top: 0;
+  box-shadow: 0 0 4px #eee;
 `
 
 const App = () => ( 
-  <Wrapper>
+  <Wrapper className="mainWrapper">
     <NavBar />
     <BudgetList />
   </Wrapper>
