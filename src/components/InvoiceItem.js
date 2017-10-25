@@ -23,7 +23,7 @@ const Bullet = styled.div`
   height: 10px;
   background: #2D9AFF;
   margin-left: -17px;
-  border-radius: 50%;
+  border-radius: 100%;
 `
 
 const ItemTitle = styled.div`
