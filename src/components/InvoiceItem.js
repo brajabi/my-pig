@@ -4,11 +4,11 @@ import styled from 'styled-components'
 const ItemWrapper = styled.div`
   width: 100%;
   height: 50px;
+  display: flex;
+  justify-content: space-between;
   border-left: 3px solid #2D9AFF;
   padding-left: 10px;
   line-height: 50px;
-  display: flex;
-  justify-content: space-between;
 `
 
 const ItemContent = styled.div`
@@ -21,9 +21,9 @@ const ItemContent = styled.div`
 const Bullet = styled.div`
   width: 10px;
   height: 10px;
-  background: #2D9AFF;
   margin-left: -17px;
   border-radius: 100%;
+  background: #2D9AFF;
 `
 
 const ItemTitle = styled.div`
