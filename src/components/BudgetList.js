@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import styled from 'styled-components'
 
 import * as actions from '../actions/invoice'
+import * as selectors from '../selectors/invoice'
 import InvoiceItem from './InvoiceItem'
 import InvoiceAdder from './InvoiceAdder'
 import NowTimeLine from './NowTimeLine'
@@ -11,6 +12,10 @@ class BudgetList extends Component {
   state = {
     currentValue: "",
     currentPrice: "",
+    loading: false,
+  }
+  componentDidMount() {
+    this.props.fetchInvoices()
   }
 
   itemSaver = (props) => {
@@ -22,7 +27,7 @@ class BudgetList extends Component {
   }
 
   addInvoiceHandler = () => {
-    this.props.addInvoice(
+    this.props.addInvoiceRequest(
       this.state.currentValue,
       this.state.currentPrice,
     )
@@ -30,13 +35,10 @@ class BudgetList extends Component {
     this.setState({ currentValue: "", currentPrice: 0 })
   }
 
-  render() {
-    const { valuesArray, dispatch } = this.props
 
-    let totalPrice = 0;
-    valuesArray.map(( p, i ) => {
-      totalPrice += p.price;
-    });
+
+  render() {
+    const { valuesArray, dispatch, budget } = this.props
 
     return (
       <Wrapper>
@@ -47,7 +49,12 @@ class BudgetList extends Component {
             ))}
           </InvoiceItemContainer>
 
-          <NowTimeLine totalPrice={totalPrice} />
+          {
+            this.state.loading && 
+            <div>LOADING...</div>
+          }
+
+          <NowTimeLine totalPrice={budget} />
         </div>
 
         <InvoiceAdder
@@ -81,16 +88,13 @@ const InvoiceItemContainer = styled.div`
 `
 
 const mapStateToProps = state => ({
-  valuesArray: state,
+  budget: selectors.getBudget(state),
+  valuesArray: state
 })
 
 const mapDispatchToProps = {
-  addInvoice: actions.addInvoice,
+  addInvoiceRequest: actions.addInvoiceRequest,
+  fetchInvoices: actions.fetchInvoices,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(BudgetList)
-
-
-//e352aad544267901d3d9e512e375dc37c972041a3ea259e7d450a17727366a9b
-
-// Secret 4ed4848f1d6c5ea0e690d292458e596cc5cb92f221d034ab89e6cec09536fac8 
