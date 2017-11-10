@@ -10,6 +10,7 @@ var instance = axios.create({
   },
 });
 
+
 function sendData(Data){
   return instance({
     method: 'post',
@@ -18,6 +19,7 @@ function sendData(Data){
   })
   .then(({ data }) => data);
 }
+
 
 function allInvoiceApi(Data){
   return instance({
